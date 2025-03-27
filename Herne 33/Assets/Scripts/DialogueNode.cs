@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct PlayerReply
+public class PlayerReply
 {
     public string line;
     public DialogueNode nextNode;
@@ -17,5 +17,5 @@ public class DialogueNode : ScriptableObject
     public List<string> Lines;
 
     [Tooltip("The dialogue options for the player's response, and what node each response leads to.")]
-    public PlayerReply[] ReplyOptions;
+    public List<PlayerReply> ReplyOptions;
 }
