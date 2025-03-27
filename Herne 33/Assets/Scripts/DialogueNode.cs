@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -13,7 +14,7 @@ public struct PlayerReply
 public class DialogueNode : ScriptableObject
 {
     [Tooltip("The lines of dialogue the NPC says in this node.")]
-    public string[] Lines;
+    public List<string> Lines;
 
     [Tooltip("The dialogue options for the player's response, and what node each response leads to.")]
     public PlayerReply[] ReplyOptions;
