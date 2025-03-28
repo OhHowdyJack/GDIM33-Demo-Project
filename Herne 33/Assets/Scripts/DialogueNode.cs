@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
 
 namespace GDIM33Demo
 {
@@ -13,5 +11,8 @@ namespace GDIM33Demo
 
         [Tooltip("The dialogue options for the player's response, and what node each response leads to.")]
         public List<PlayerReply> ReplyOptions;
+
+        [Tooltip("The associated quest given after this line completes.")]
+        public Quest QuestGiven;
     }
 }
