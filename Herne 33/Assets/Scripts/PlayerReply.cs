@@ -7,6 +7,9 @@ namespace GDIM33Demo
     [Serializable][Inspectable]
     public class PlayerReply
     {
+        //---------------------------------------------------------------------
+        // Variables
+        //---------------------------------------------------------------------
         [Inspectable]
         public string line;
         [Inspectable]

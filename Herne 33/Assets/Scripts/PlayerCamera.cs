@@ -94,7 +94,17 @@ namespace GDIM33Demo
                 Subject[] allSubjects = FindObjectsByType<Subject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
                 List<Subject> potentialTargets = allSubjects.Where(s => s.PhotoSubjectType == _activeQuest.Subject).ToList();
 
-                Debug.Log("targets found: " + potentialTargets.Count);
+                // determine if any of the subjects are within the MAIN CAMERAS frustrum
+                // have to do it this way bc we don't want to include Scene window or other cameras!
+                Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+                foreach(Subject target in potentialTargets)
+                {
+                    if(GeometryUtility.TestPlanesAABB(cameraPlanes, target.BoundsForPhoto))
+                    {
+                        _activeQuest.MarkSuccessfulPhotoTaken();
+                        break;
+                    }
+                }
             }
 
             // tell UI
