@@ -1,5 +1,10 @@
 using UnityEngine;
 
+public enum Anomaly
+{
+    Jellyfish
+}
+
 namespace GDIM33Demo
 {
     [CreateAssetMenu(fileName = "Quest", menuName = "ScriptableObjects/Quest", order = 1)]
@@ -10,5 +15,8 @@ namespace GDIM33Demo
 
         [Tooltip("A longer description of the quest.")]
         public string Description;
+
+        [Tooltip("The required subject.")]
+        public Anomaly Subject;
     }
 }
