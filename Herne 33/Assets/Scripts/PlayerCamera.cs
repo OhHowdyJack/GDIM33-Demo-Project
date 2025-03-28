@@ -1,7 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+
 using Unity.VisualScripting;
 
 namespace GDIM33Demo
@@ -18,6 +22,7 @@ namespace GDIM33Demo
         private Texture2D[] _activePhotos;
         private int _currentPhotoIndex;
         private bool _waitingForPhoto;
+        private Quest _activeQuest;
 
         //---------------------------------------------------------------------
         // Methods
@@ -47,9 +52,10 @@ namespace GDIM33Demo
         }
 
         //---------------------------------------------------------------------
-        public void TakePhoto ()
+        public void TakePhoto (Quest quest)
         {
             _waitingForPhoto = true;
+            _activeQuest = quest;
         }
 
         //---------------------------------------------------------------------
@@ -78,9 +84,25 @@ namespace GDIM33Demo
 
             _currentPhotoIndex++;
 
+            // check if frame contains subject
+            if(_activeQuest != null)
+            {
+                Debug.Log(_activeQuest.Subject);
+
+                // finds all of the Subjects in the Scene of the type we're looking for
+                // this is hella inefficient, I know, it's just a prototype :)
+                Subject[] allSubjects = FindObjectsByType<Subject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                List<Subject> potentialTargets = allSubjects.Where(s => s.PhotoSubjectType == _activeQuest.Subject).ToList();
+
+                Debug.Log("targets found: " + potentialTargets.Count);
+            }
+
             // tell UI
             _recentPhoto = photo;
             EventBus.Trigger(EventNames.PhotoReadyEvent, 0);
+
+            // clear current quest
+            _activeQuest = null;
         }
 
         //---------------------------------------------------------------------

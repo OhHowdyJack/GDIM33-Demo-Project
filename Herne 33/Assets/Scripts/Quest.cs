@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.VisualScripting;
 
-public enum Anomaly
+public enum PhotoSubject
 {
     Jellyfish
 }
@@ -17,6 +18,6 @@ namespace GDIM33Demo
         public string Description;
 
         [Tooltip("The required subject.")]
-        public Anomaly Subject;
+        public PhotoSubject Subject;
     }
 }

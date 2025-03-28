@@ -422,6 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6167540449739612610}
   - component: {fileID: 1217140059794000496}
+  - component: {fileID: 8599864656448572128}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Untagged
@@ -467,6 +468,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8599864656448572128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793314322426179911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ff9fb1abbbb468f8ed45b547bbc8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photoSubjectType: 0
 --- !u!1 &7992317895222893989
 GameObject:
   m_ObjectHideFlags: 0
