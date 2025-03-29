@@ -32,8 +32,18 @@ namespace GDIM33Demo
         private bool _completed;
         public bool Completed => _completed;
 
+        private GameObject _questGiver;
+        public GameObject QuestGiver => _questGiver;
+
         //---------------------------------------------------------------------
         // Methods
+        //---------------------------------------------------------------------
+        public void SetQuestGiverObject (GameObject questGiver)
+        {
+            _questGiver = questGiver;
+        }
+
+
         //---------------------------------------------------------------------
         public void MarkSuccessfulPhotoTaken ()
         {
