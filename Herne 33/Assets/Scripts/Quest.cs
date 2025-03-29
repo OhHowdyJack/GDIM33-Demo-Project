@@ -38,11 +38,19 @@ namespace GDIM33Demo
         //---------------------------------------------------------------------
         // Methods
         //---------------------------------------------------------------------
+        private void OnEnable ()
+        {
+            // clear runtime only variables of our editor sins
+            _completed = false;
+            _successfulPhotoTaken = false;
+            _questGiver = null;
+        }
+
+        //---------------------------------------------------------------------
         public void SetQuestGiverObject (GameObject questGiver)
         {
             _questGiver = questGiver;
         }
-
 
         //---------------------------------------------------------------------
         public void MarkSuccessfulPhotoTaken ()

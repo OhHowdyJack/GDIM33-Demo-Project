@@ -87,8 +87,6 @@ namespace GDIM33Demo
             // check if frame contains subject
             if(_activeQuest != null)
             {
-                Debug.Log(_activeQuest.Subject);
-
                 // finds all of the Subjects in the Scene of the type we're looking for
                 // this is hella inefficient, I know, it's just a prototype :)
                 Subject[] allSubjects = FindObjectsByType<Subject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
