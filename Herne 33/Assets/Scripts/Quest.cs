@@ -23,8 +23,16 @@ namespace GDIM33Demo
         [Tooltip("The required subject.")]
         public PhotoSubject Subject;
 
+        [Tooltip("The dialogue the NPC plays when you turn in the quest.")]
+        public DialogueNode QuestCompletionDialogue;
+
         //---------------------------------------------------------------------
         // Properties
+        // this is dumb that i built it like this. i should have just made them
+        //  public vars
+        // but i don't want the users to edit them in the SO asset...
+        // but at this point i also don't want to refactor bc i don't know how
+        //  to find where in the Graphs I used the getter methods...
         //---------------------------------------------------------------------
         private bool _successfulPhotoTaken;
         public bool SuccessfulPhotoTaken => _successfulPhotoTaken;
