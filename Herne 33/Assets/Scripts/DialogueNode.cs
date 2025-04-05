@@ -15,7 +15,10 @@ namespace GDIM33Demo
         [Tooltip("The dialogue options for the player's response, and what node each response leads to.")]
         public List<PlayerReply> ReplyOptions;
 
-        [Tooltip("The associated quest given after this line completes.")]
+        [Tooltip("The associated quest ASSIGNED after this line completes.")]
         public Quest QuestGiven;
+
+        [Tooltip("The associated quest FINISHED after this line completes.")]
+        public Quest QuestFinished;
     }
 }
