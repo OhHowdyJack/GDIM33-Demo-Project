@@ -118,6 +118,8 @@ namespace GDIM33Demo
             // check if frame contains subject
             if(_activeQuest != null)
             {
+                returnValue = 1; 
+                
                 // finds all of the Subjects in the Scene of the type we're looking for
                 // this is hella inefficient, I know, it's just a prototype :)
                 Subject[] allSubjects = FindObjectsByType<Subject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -129,17 +131,16 @@ namespace GDIM33Demo
                 // there's multiple ways to evaluate if an object is in-frame,
                 // but we have to do it this way bc we don't want to include Scene window or other cameras!
                 Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-                returnValue = 0;
                 foreach(Subject target in potentialTargets)
                 {
                     Bounds targetBounds = target.BoundsForPhoto;
                     if(GeometryUtility.TestPlanesAABB(cameraPlanes, targetBounds))
                     {
-                        returnValue = 1;
+                        returnValue = 2;
                         float subjectDist = Vector3.Distance(targetBounds.center, _cameraPosition.position);
                         if(Mathf.Abs(subjectDist - focalDistance) <= _focalRange)
                         {
-                            returnValue = 2;
+                            returnValue = 3;
                             _activeQuest.MarkSuccessfulPhotoTaken();
                             break;
                         }
@@ -149,7 +150,7 @@ namespace GDIM33Demo
 
             // tell UI
             _recentPhoto = photo;
-            // returnValue => 0 = subject not in frame; 1 = subject out of focus; 2 = successful
+            // returnValue => 0 = no subject; 1 = subject not in frame; 2 = subject out of focus; 3 = successful
             EventBus.Trigger(EventNames.PhotoReadyEvent, returnValue);
 
             // clear current quest
