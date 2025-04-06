@@ -18,8 +18,13 @@ namespace GDIM33Demo
         //---------------------------------------------------------------------
         [SerializeField] private float _minFocalDistance = 0.10f;
         [SerializeField] private float _maxFocalDistance = 100.0f;
+        // ideally, focal range would be calculated based on camera aperture
+        // and focal length... but that's a TODO for once I actually write
+        // a custom PP effect for the depth of field
+        [SerializeField] private float _focalRange = 2.0f;
         [SerializeField] private Volume _depthOfFieldVolume;
         [SerializeField] private int _numFilm;
+        [SerializeField] private Transform _cameraPosition;
         public Texture2D _recentPhoto;
 
         private Texture2D[] _activePhotos;
@@ -108,6 +113,8 @@ namespace GDIM33Demo
 
             _currentPhotoIndex++;
 
+            int returnValue = 0;
+
             // check if frame contains subject
             if(_activeQuest != null)
             {
@@ -116,22 +123,34 @@ namespace GDIM33Demo
                 Subject[] allSubjects = FindObjectsByType<Subject>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
                 List<Subject> potentialTargets = allSubjects.Where(s => s.PhotoSubjectType == _activeQuest.Subject).ToList();
 
-                // determine if any of the subjects are within the MAIN CAMERAS frustrum
-                // have to do it this way bc we don't want to include Scene window or other cameras!
+                float focalDistance = _depthOfFieldSettings.focusDistance.value;
+
+                // determine if any of the subjects are within the MAIN CAMERAS frustrum AND are in-focus
+                // there's multiple ways to evaluate if an object is in-frame,
+                // but we have to do it this way bc we don't want to include Scene window or other cameras!
                 Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+                returnValue = 0;
                 foreach(Subject target in potentialTargets)
                 {
-                    if(GeometryUtility.TestPlanesAABB(cameraPlanes, target.BoundsForPhoto))
+                    Bounds targetBounds = target.BoundsForPhoto;
+                    if(GeometryUtility.TestPlanesAABB(cameraPlanes, targetBounds))
                     {
-                        _activeQuest.MarkSuccessfulPhotoTaken();
-                        break;
+                        returnValue = 1;
+                        float subjectDist = Vector3.Distance(targetBounds.center, _cameraPosition.position);
+                        if(Mathf.Abs(subjectDist - focalDistance) <= _focalRange)
+                        {
+                            returnValue = 2;
+                            _activeQuest.MarkSuccessfulPhotoTaken();
+                            break;
+                        }
                     }
                 }
             }
 
             // tell UI
             _recentPhoto = photo;
-            EventBus.Trigger(EventNames.PhotoReadyEvent, 0);
+            // returnValue => 0 = subject not in frame; 1 = subject out of focus; 2 = successful
+            EventBus.Trigger(EventNames.PhotoReadyEvent, returnValue);
 
             // clear current quest
             _activeQuest = null;
