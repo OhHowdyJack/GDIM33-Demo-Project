@@ -5,3 +5,4 @@
 - [Wardster](https://sketchfab.com/WardsterSAW/models) - various 3D models and animations for environment models, characters, & textures
 - [Mixamo](https://www.mixamo.com/) - various humanoid animations
 - [animated low poly deer](https://sketchfab.com/3d-models/animated-low-poly-deer-game-ready-f1728b72d85b4b8e944d0e3973cc277d) - deer model, animation, and texture
+- [PSX alt girl](https://sketchfab.com/3d-models/psx-alt-girl-07986f66480e46a8a8182adb35d6e7e8) - goth girl model/texture/rig
