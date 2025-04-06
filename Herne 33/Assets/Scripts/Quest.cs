@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 
 public enum PhotoSubject
 {
-    Jellyfish
+    Jellyfish, Deer
 }
 
 namespace GDIM33Demo
