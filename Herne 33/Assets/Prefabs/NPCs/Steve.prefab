@@ -250,7 +250,7 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 7330698669689519641}
-    - {fileID: 11400000, guid: 0b15570d1bc994424a287c3930f9e1d7, type: 2}
+    - {fileID: 11400000, guid: 35df89477b1ce49ec9b41a04b14b9c9d, type: 2}
     - {fileID: 6392960898534354044}
     - {fileID: 21300000, guid: 2ba071c40f4db462b938a8727d40fe53, type: 3}
     - {fileID: 21300000, guid: dc5765ae1826647f8880f56c157025e1, type: 3}

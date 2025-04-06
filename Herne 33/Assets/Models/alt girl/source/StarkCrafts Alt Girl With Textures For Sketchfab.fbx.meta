@@ -3,7 +3,17 @@ guid: b9a9b0d589abd48e8a37d16e69d1e10b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stark Alt Girl Body
+    second: {fileID: 2100000, guid: bbbb22d65bbdd4c5eb0abc184457f2ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stark Alt Girl Head
+    second: {fileID: 2100000, guid: 7d0940ff964f6462aaf08fa2bb0bc868, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
