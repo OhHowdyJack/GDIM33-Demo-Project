@@ -39,7 +39,7 @@ namespace GDIM33Demo
             _depthOfFieldVolume.profile.TryGet<DepthOfField>(out _depthOfFieldSettings);
             Assert.IsNotNull(_depthOfFieldSettings);
             var focalDistance = _depthOfFieldSettings.focusDistance;
-            focalDistance.value = Mathf.Lerp(
+            focalDistance.value = Mathf.SmoothStep(
                 _minFocalDistance,
                 _maxFocalDistance,
                 0.5f
@@ -50,7 +50,7 @@ namespace GDIM33Demo
         public void SetFocalDistance (float linearDistance)
         {
             var focalDistance = _depthOfFieldSettings.focusDistance;
-            focalDistance.value = Mathf.Lerp(
+            focalDistance.value = Mathf.SmoothStep(
                 _minFocalDistance,
                 _maxFocalDistance,
                 linearDistance
