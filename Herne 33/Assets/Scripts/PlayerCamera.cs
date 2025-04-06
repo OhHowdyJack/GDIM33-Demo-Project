@@ -16,6 +16,9 @@ namespace GDIM33Demo
         //---------------------------------------------------------------------
         // Variables
         //---------------------------------------------------------------------
+        [SerializeField] private float _minFocalDistance = 0.10f;
+        [SerializeField] private float _maxFocalDistance = 100.0f;
+        [SerializeField] private Volume _depthOfFieldVolume;
         [SerializeField] private int _numFilm;
         public Texture2D _recentPhoto;
 
@@ -23,6 +26,7 @@ namespace GDIM33Demo
         private int _currentPhotoIndex;
         private bool _waitingForPhoto;
         private Quest _activeQuest;
+        private DepthOfField _depthOfFieldSettings;
 
         //---------------------------------------------------------------------
         // Methods
@@ -31,6 +35,26 @@ namespace GDIM33Demo
         {
             SetupFilm();
             RenderPipelineManager.endCameraRendering += OnEndCameraRendering;
+
+            _depthOfFieldVolume.profile.TryGet<DepthOfField>(out _depthOfFieldSettings);
+            Assert.IsNotNull(_depthOfFieldSettings);
+            var focalDistance = _depthOfFieldSettings.focusDistance;
+            focalDistance.value = Mathf.Lerp(
+                _minFocalDistance,
+                _maxFocalDistance,
+                0.5f
+            );
+        }
+
+        //---------------------------------------------------------------------
+        public void SetFocalDistance (float linearDistance)
+        {
+            var focalDistance = _depthOfFieldSettings.focusDistance;
+            focalDistance.value = Mathf.Lerp(
+                _minFocalDistance,
+                _maxFocalDistance,
+                linearDistance
+            );
         }
 
         //---------------------------------------------------------------------
