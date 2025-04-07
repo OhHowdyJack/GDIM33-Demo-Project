@@ -1,8 +1,8 @@
 # GDIM33 Demo Project
 ## Playable
 You can [play the Herne 33 demo on Itch.io here](https://outofmanna.itch.io/herne-33).
-## Class demos
-This list will be updated whenever new lecture demos are added. This repository is NOT your in-class activity; it is the demo that went along with the lecture!
+## Scene guide
+This list of Scenes in the project will be updated whenever new lecture demos are added. This repository is NOT your in-class activity; it is the demo that went along with the lecture!
 - Herne 33 demo: Vertical Slice project demo.
 - W2 Demo: W2 lecture demo.
 - W2 Activty Answer: Possible solutions for W2 in-class activity.
