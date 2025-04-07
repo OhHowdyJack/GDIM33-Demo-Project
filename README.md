@@ -1,4 +1,7 @@
 # GDIM33 Demo Project
+## Demos
+This list will be updated whenever new lecture demos are added. This repository is NOT your in-class activity; it is the demo that went along with the lecture!
+- Herne 33 demo (Scenes/ Main/ Main.unity): Vertical Slice project demo.
 ## Open-source assets
 - [Classic skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/classic-skybox-24923) - skybox
 - [elbolilloduro](https://elbolilloduro.itch.io/) - various asset packs used for environment models, characters, & textures
